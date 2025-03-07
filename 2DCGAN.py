@@ -7,7 +7,6 @@ import numpy as np
 import matplotlib.pyplot as plt
 import wandb
 import os
-os.environ['TF_CPP_MIN_LOG_LEVEL'] = '2'
 
 batch_size = 128
 latent_dim = 100
@@ -37,11 +36,17 @@ def build_generator():
     model.add(layers.Reshape((7, 7, 256)))
 
     # First upsampling block
-    model.add(layers.Conv2DTranspose(128, (5, 5), strides=(2, 2), padding='same', use_bias=False))
+    model.add(layers.Conv2DTranspose(128, (5, 5), strides=(1, 1), padding='same', use_bias=False))
     model.add(layers.BatchNormalization())
     model.add(layers.LeakyReLU())
 
     # Second upsampling block
+    model.add(layers.Conv2DTranspose (128, (5, 5), strides=(2, 2), padding='same', use_bias=False))
+    model.add(layers.BatchNormalization())
+    model.add(layers.LeakyReLU())
+
+
+    # Third upsampling block
     model.add(layers.Conv2DTranspose(64, (5,5), strides=(2, 2), padding='same', use_bias=False))
     model.add(layers.BatchNormalization())
     model.add(layers.LeakyReLU())
@@ -61,7 +66,7 @@ def build_discriminator():
     model.add(layers.Dropout(0.3)) # preventing overfitting
 
     # Second layer
-    model.add(layers.Conv2D(128, (5, 5), strides=(2, 2), padding='same'))
+    model.add(layers.Conv2D(128, (5, 5), strides=(2, 2), padding='same',))
     model.add(layers.LeakyReLU())
     model.add(layers.Dropout(0.3))
 
@@ -182,7 +187,7 @@ def train(dataset, epochs):
         epoch_gen_loss /= num_batches
         epoch_disc_loss /= num_batches
         
-        #Log to wanb:
+        # Log to wanb
         wandb.log({
             'epoch': epoch,
             'generator_loss': epoch_gen_loss,
@@ -199,7 +204,7 @@ def train(dataset, epochs):
             images = images * 0.5 + 0.5 # scale from [-1, 1] to [0, 1]
             wandb.log({
                 "generated_images": [wandb.Image(img) for img in images]
-            })
+             })
 
         #print progress
         print(f'Epoch {epoch+1}, Gen Loss: {epoch_gen_loss:.4f}, '

@@ -7,11 +7,12 @@ import numpy as np
 import matplotlib.pyplot as plt
 import wandb
 import os
-os.environ['TF_CPP_MIN_LOG_LEVEL'] = '2'
 
 batch_size = 128
 latent_dim = 100
 epochs = 50
+learning_rate = 0.0005
+beta_1 = 0.5
 
 # Load and preprocess the MNIST dataset
 (train_images, _), (_, _) = mnist.load_data()
@@ -37,11 +38,17 @@ def build_generator():
     model.add(layers.Reshape((7, 7, 256)))
 
     # First upsampling block
-    model.add(layers.Conv2DTranspose(128, (5, 5), strides=(2, 2), padding='same', use_bias=False))
+    model.add(layers.Conv2DTranspose(128, (5, 5), strides=(1, 1), padding='same', use_bias=False))
     model.add(layers.BatchNormalization())
     model.add(layers.LeakyReLU())
 
     # Second upsampling block
+    model.add(layers.Conv2DTranspose (128, (5, 5), strides=(2, 2), padding='same', use_bias=False))
+    model.add(layers.BatchNormalization())
+    model.add(layers.LeakyReLU())
+
+
+    # Third upsampling block
     model.add(layers.Conv2DTranspose(64, (5,5), strides=(2, 2), padding='same', use_bias=False))
     model.add(layers.BatchNormalization())
     model.add(layers.LeakyReLU())
@@ -61,7 +68,7 @@ def build_discriminator():
     model.add(layers.Dropout(0.3)) # preventing overfitting
 
     # Second layer
-    model.add(layers.Conv2D(128, (5, 5), strides=(2, 2), padding='same'))
+    model.add(layers.Conv2D(128, (5, 5), strides=(2, 2), padding='same',))
     model.add(layers.LeakyReLU())
     model.add(layers.Dropout(0.3))
 
@@ -73,8 +80,8 @@ def build_discriminator():
 
 
 # optimizers
-generator_optimizer = optimizers.Adam(learning_rate=0.0002, beta_1=0.5)
-discriminator_optimizer = optimizers.Adam(learning_rate=0.0002, beta_1=0.5)
+generator_optimizer = optimizers.Adam(learning_rate=learning_rate, beta_1=beta_1)
+discriminator_optimizer = optimizers.Adam(learning_rate=learning_rate, beta_1=beta_1)
 
 # loss function
 cross_entropy = tf.keras.losses.BinaryCrossentropy(from_logits=True)
@@ -182,7 +189,7 @@ def train(dataset, epochs):
         epoch_gen_loss /= num_batches
         epoch_disc_loss /= num_batches
         
-        #Log to wanb:
+        # Log to wanb
         wandb.log({
             'epoch': epoch,
             'generator_loss': epoch_gen_loss,
