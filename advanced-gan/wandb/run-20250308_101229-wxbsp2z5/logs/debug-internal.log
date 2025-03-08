@@ -1,0 +1,15 @@
+{"time":"2025-03-08T10:12:29.2278691-06:00","level":"INFO","msg":"stream: starting","core version":"0.19.8","symlink path":"C:\\Users\\abiga\\repos\\advanced-gan\\wandb\\run-20250308_101229-wxbsp2z5\\logs\\debug-core.log"}
+{"time":"2025-03-08T10:12:29.3424809-06:00","level":"INFO","msg":"created new stream","id":"wxbsp2z5"}
+{"time":"2025-03-08T10:12:29.3424809-06:00","level":"INFO","msg":"stream: started","id":"wxbsp2z5"}
+{"time":"2025-03-08T10:12:29.3424809-06:00","level":"INFO","msg":"writer: Do: started","stream_id":"wxbsp2z5"}
+{"time":"2025-03-08T10:12:29.3430833-06:00","level":"INFO","msg":"handler: started","stream_id":"wxbsp2z5"}
+{"time":"2025-03-08T10:12:29.3430833-06:00","level":"INFO","msg":"sender: started","stream_id":"wxbsp2z5"}
+{"time":"2025-03-08T10:12:29.5223366-06:00","level":"INFO","msg":"Starting system monitor"}
+{"time":"2025-03-08T10:13:46.9397314-06:00","level":"INFO","msg":"stream: closing","id":"wxbsp2z5"}
+{"time":"2025-03-08T10:13:46.9397314-06:00","level":"INFO","msg":"Stopping system monitor"}
+{"time":"2025-03-08T10:13:46.9413517-06:00","level":"INFO","msg":"Stopped system monitor"}
+{"time":"2025-03-08T10:13:47.279415-06:00","level":"INFO","msg":"fileTransfer: Close: file transfer manager closed"}
+{"time":"2025-03-08T10:13:47.3827625-06:00","level":"INFO","msg":"sender: closed","stream_id":"wxbsp2z5"}
+{"time":"2025-03-08T10:13:47.3832749-06:00","level":"INFO","msg":"handler: closed","stream_id":"wxbsp2z5"}
+{"time":"2025-03-08T10:13:47.3832749-06:00","level":"INFO","msg":"writer: Close: closed","stream_id":"wxbsp2z5"}
+{"time":"2025-03-08T10:13:47.3832749-06:00","level":"INFO","msg":"stream: closed","id":"wxbsp2z5"}

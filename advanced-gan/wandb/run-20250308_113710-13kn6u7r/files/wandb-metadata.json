@@ -1,0 +1,38 @@
+{
+  "os":  "Windows-10-10.0.26100-SP0",
+  "python":  "CPython 3.9.15",
+  "startedAt":  "2025-03-08T17:37:11.013394Z",
+  "program":  "C:\\Users\\abiga\\repos\\advanced-gan\\3train_cifar10.py",
+  "codePath":  "3train_cifar10.py",
+  "email":  "abigail.aleman@atlasschool.com",
+  "root":  "C:\\Users\\abiga\\repos\\advanced-gan",
+  "host":  "Veronica",
+  "executable":  "C:\\Users\\abiga\\miniconda3\\envs\\tf_gpu\\python.exe",
+  "codePathLocal":  "3train_cifar10.py",
+  "cpu_count":  8,
+  "cpu_count_logical":  16,
+  "gpu":  "NVIDIA GeForce RTX 4050 Laptop GPU",
+  "gpu_count":  1,
+  "disk":  {
+    "/":  {
+      "total":  "482768916480",
+      "used":  "288959266816"
+    }
+  },
+  "memory":  {
+    "total":  "16369410048"
+  },
+  "cpu":  {
+    "count":  8,
+    "countLogical":  16
+  },
+  "gpu_nvidia":  [
+    {
+      "name":  "NVIDIA GeForce RTX 4050 Laptop GPU",
+      "memoryTotal":  "6439305216",
+      "cudaCores":  2560,
+      "architecture":  "Ada"
+    }
+  ],
+  "cudaVersion":  "12.8"
+}
