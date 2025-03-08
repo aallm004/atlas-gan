@@ -1,4 +1,0 @@
-Traceback (most recent call last):
-  File "C:\Users\abiga\repos\advanced-gan\train_cifar10.py", line 44, in <module>
-    encoder, decoder, auto = autoencoder(input_dims, hidden_layers, latent_dim, lambtha)
-TypeError: 'module' object is not callable
