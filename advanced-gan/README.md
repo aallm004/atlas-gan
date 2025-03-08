@@ -1,3 +1,14 @@
+Folder Organization
+```
+- advanced-gan
+   - auto: autoencoder package
+      -autoencoder.py: module containing autoencoder function
+   - train_cifar10.py: base
+   - 2train_cifar10.py: second experiment (added L1 regularization with lambda)
+   - 3train_cifar10.py: second experiment (mirrors the encoder in reverse)
+```
+
+
 # Sparse Autoencoder
 
 This project implements a sparse autoencoder using TensorFlow/Keras. The sparse autoencoder learns compressed representations of data using L1 regularization to enforce sparsity.
